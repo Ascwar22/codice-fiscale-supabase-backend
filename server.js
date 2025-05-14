@@ -35,6 +35,10 @@ app.get('/test', async (req, res) => {
   }
   res.send('Connesso correttamente a Supabase!');
 });
+app.get('/', (req, res) => {
+  res.send(path.join(__dirname, 'index.html'));
+});
+
 
 // Funzione per calcolare il codice fiscale
 function calcolaCodiceFiscale({ nome, cognome, anno, mese, giorno, sesso, codiceComune }) {
