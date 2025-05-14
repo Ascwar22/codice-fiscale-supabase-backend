@@ -36,7 +36,7 @@ app.get('/test', async (req, res) => {
   res.send('Connesso correttamente a Supabase!');
 });
 app.get('/', (req, res) => {
-  res.send(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 
