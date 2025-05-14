@@ -1,0 +1,9 @@
+# Ignora il file .env con le variabili sensibili
+.env
+
+# Ignora la cartella dei moduli Node.js
+node_modules/
+
+# Cache ed errori comuni
+.DS_Store
+npm-debug.log
