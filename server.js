@@ -1,5 +1,5 @@
 const express = require('express');
-const express = require('cors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
