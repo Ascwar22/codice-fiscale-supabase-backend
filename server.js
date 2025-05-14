@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const app = express();
+
 const bodyParser = require('body-parser');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
@@ -9,23 +11,21 @@ require('dotenv').config();
 console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
 console.log("SUPABASE_KEY:", process.env.SUPABASE_KEY ? "✓ presente" : "✗ mancante");
 //Consentire le richieste da netlify
-app.use(cors({
-  origin: 'codice-fiscale-supabase.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
 
 
 //Inizializza Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
-
-const app = express();
 const port = 3000;
 
 //Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(cors({
+origin: 'codice-fiscale-supabase.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 //TEST: connessione Supabase
 app.get('/test', async (req, res) => {
   const { data, error } = await supabase.from('CodiciFiscali').select('*').limit(1);
