@@ -19,7 +19,7 @@ const port = 3000;
 
 //Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(express.static(__dirname)));
 
 app.use(cors({
 origin: 'codice-fiscale-supabase.netlify.app',
