@@ -7,6 +7,14 @@ require('dotenv').config();
 //DEBUG: stampa le variabili ambiente per sicurezza
 console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
 console.log("SUPABASE_KEY:", process.env.SUPABASE_KEY ? "✓ presente" : "✗ mancante");
+//Consentire le richieste da netlify
+const cors = require('cors');
+app.use(cors({
+  origin: 'codice-fiscale-supabase.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 
 //Inizializza Supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
